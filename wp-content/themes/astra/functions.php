@@ -202,3 +202,15 @@ require_once ASTRA_THEME_DIR . 'inc/core/markup/class-astra-markup.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-filters.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-hooks.php';
 require_once ASTRA_THEME_DIR . 'inc/core/deprecated/deprecated-functions.php';
+
+function create_custom_taxonomy(){
+	$args =  array(
+	'label' => 'Priority Level',
+	'rewrite' => array('slug' => 'priority'),
+	'show_in_rest' => true,
+	'hierarchical' => true);
+	
+	register_taxonomy('priority', 'post', $args);
+}
+
+add_action('init', 'create_custom_taxonomy');
